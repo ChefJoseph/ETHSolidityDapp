@@ -20,15 +20,19 @@ npx hardhat test
 3. /test is where your contract test files go.
 
 # Imitate blockchain environment to test
-```shell
 1. Compile it.
+    ```shell
     npx hardhat compile
+    ```
 2. Deploy it to our local blockchain.
+    ```shell
     npx hardhat run scripts/run.js
     npx hardhat run scripts/deploy.js
+    ```
 3. Execute
-    Confirm with console.log
-```
+   ```shell
+   Confirm with console.log
+    ```
 hre.ethers
   hre is short for Hardhat Runtime Environment. It is an object containing all the functionality that Hardhat exposes when running a task, test or script.
 
@@ -44,6 +48,23 @@ Here we will simulate storing data, retrieving data, and changing state with mul
   ```shell
   const waveContract = await waveContractFactory.deploy();
   await waveContract.deployed();
+  ```
+  Call functions from Solidity contracts/WavePortal.js
+  ```shell
+  console.log("Contract deployed to:", waveContract.address);
+  console.log("Contract deployed by:", owner.address);
+
+  await waveContract.getTotalWaves();
+
+  const firstWaveTxn = await waveContract.wave();
+  await firstWaveTxn.wait();
+
+  await waveContract.getTotalWaves();
+
+  const secondWaveTxn = await waveContract.connect(randomPerson).wave();
+  await secondWaveTxn.wait();
+
+  await waveContract.getTotalWaves();
   ```
 3. Then, when the script ends Hardhat will automatically destroy that local network.
   ```shell
