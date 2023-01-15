@@ -119,7 +119,7 @@ module.exports = {
 # React frontend
 Deployed using REPL:
 <br>
-<a>https://waveportal-starter-project.chefjoseph.repl.co/</a>
+<a>https://waveportal-project.chefjoseph.repl.co</a>
 <br>
 Click 'Connect Wallet' button to signin with Metamask extension.
 <br>
