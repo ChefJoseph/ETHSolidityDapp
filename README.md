@@ -1,9 +1,9 @@
 # Solidity dAPP
 # FAQ
 What is a smart contract? Smart contracts are self-executing lines of code (transactions) with the terms of an agreement between buyer and seller automatically verified and executed via a computer network. These transactions are traceable, transparent, and irreversible.
-Check transaction blocks:
-<a>https://etherscan.io/blocks</a>
-Use Goerli Test Network for fake Ethereum: <a>https://goerli.etherscan.io/address/0x1b5c30e5e994195a86c3b8aaFe32aEa7fd1B1756</a>
+Check transactions:
+My Goerli Test Network address: 0x1b5c30e5e994195a86c3b8aaFe32aEa7fd1B1756
+<a>https://goerli.etherscan.io/address/0x1b5c30e5e994195a86c3b8aafe32aea7fd1b1756</a>
 
 # Hardhat
 
@@ -37,13 +37,14 @@ npx hardhat test
    Confirm with console.log
    ```
     Check transaction blocks:
-   <a>https://etherscan.io/blocks/</a>
+    <a>https://goerli.etherscan.io/address/0x1b5c30e5e994195a86c3b8aafe32aea7fd1b1756</a>
+<br>
 hre.ethers
   hre is short for Hardhat Runtime Environment. It is an object containing all the functionality that Hardhat exposes when running a task, test or script.
 
 # scripts/run.js
 Here we create a local ETH network and run the functions on the Solidity contracts WavePortal.js.
-Here we will simulate storing data, retrieving data, and changing state with multiple test users.
+We will simulate storing data, retrieving data, and changing state with multiple test users.
 1. Creating a new local Ethereum network.
   ```shell
   const [owner, randomPerson] = await hre.ethers.getSigners();
@@ -83,3 +84,40 @@ Here we will simulate storing data, retrieving data, and changing state with mul
   }
   };
   ```
+# scripts/deploy.js
+Here we deploy to the real test net using Quicknode and Goerli. Each transaction is broadcasted to the testnet blockchain. The goerli testnet is a clone of the mainnet using fake ETH but are run by actual miners.
+
+start local Ethereum network
+```shell
+npx hardhat node
+```
+Deploying to Goerli testnet
+```shell
+hardhat.config.js
+/**
+ * @type import('hardhat/config').HardhatUserConfig
+ */
+module.exports = {
+    solidity: "0.8.17",
+    networks: {
+      goerli: {
+        url: "YOUR_QUICKNODE_API_URL",
+        accounts: ["YOUR_PRIVATE_GOERLI_ACCOUNT_KEY"]
+      },
+    },
+};
+```
+# React frontend
+Deployed using REPL:
+<a>https://waveportal-starter-project.chefjoseph.repl.co/</a>
+Click 'Connect Wallet' button to signin with Metamask extension.
+This is possible with:
+```shell
+const getEthereumObject = () => window.ethereum;
+const accounts = await ethereum.request({
+    method: "eth_requestAccounts",
+});
+```
+By clicking on the 'Wave at me' button, the wave() function from WavePortal.sol is called on. totalWaves state variable is incremented +=1.
+wave() costs ETH.
+getTotalWaves() is only reading so it is free.
