@@ -1,16 +1,20 @@
 # Solidity dAPP
 # FAQ
+<br>
 What is a smart contract? Smart contracts are self-executing lines of code (transactions) with the terms of an agreement between buyer and seller automatically verified and executed via a computer network. These transactions are traceable, transparent, and irreversible.
+<br>
 Check transactions:
+<br>
 My Goerli Test Network address: 0x1b5c30e5e994195a86c3b8aaFe32aEa7fd1B1756
+<br>
 <a>https://goerli.etherscan.io/address/0x1b5c30e5e994195a86c3b8aafe32aea7fd1b1756</a>
-
+<br>
 # Hardhat
-
+<br>
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
+<br>
 Try running some of the following tasks:
-
+<br>
 ```shell
 //to start local ethereum network
 npx hardhat node 
@@ -18,10 +22,11 @@ npx hardhat node
 npx hardhat test
 ```
 # Folder Structure
+<br>
 1. /contracts is where your Solidity files go to.
 2. /scripts is where you store hardhat scripts
 3. /test is where your contract test files go.
-
+<br>
 # Imitate blockchain environment to test
 1. Compile it.
     ```shell
@@ -36,20 +41,26 @@ npx hardhat test
    ```shell
    Confirm with console.log
    ```
+   <br>
     Check transaction blocks:
+    <br>
     <a>https://goerli.etherscan.io/address/0x1b5c30e5e994195a86c3b8aafe32aea7fd1b1756</a>
 <br>
 hre.ethers
+<br>
   hre is short for Hardhat Runtime Environment. It is an object containing all the functionality that Hardhat exposes when running a task, test or script.
 
 # scripts/run.js
 Here we create a local ETH network and run the functions on the Solidity contracts WavePortal.js.
+<br>
 We will simulate storing data, retrieving data, and changing state with multiple test users.
+<br>
 1. Creating a new local Ethereum network.
   ```shell
   const [owner, randomPerson] = await hre.ethers.getSigners();
   const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
   ```
+<br>
 2. Deploying your contract.
   ```shell
   const waveContract = await waveContractFactory.deploy();
@@ -72,6 +83,7 @@ We will simulate storing data, retrieving data, and changing state with multiple
 
   await waveContract.getTotalWaves();
   ```
+<br>
 3. Then, when the script ends Hardhat will automatically destroy that local network.
   ```shell
   const runMain = async () => {
@@ -86,11 +98,12 @@ We will simulate storing data, retrieving data, and changing state with multiple
   ```
 # scripts/deploy.js
 Here we deploy to the real test net using Quicknode and Goerli. Each transaction is broadcasted to the testnet blockchain. The goerli testnet is a clone of the mainnet using fake ETH but are run by actual miners.
-
+<br>
 start local Ethereum network
 ```shell
 npx hardhat node
 ```
+<br>
 Deploying to Goerli testnet
 ```shell
 hardhat.config.js
@@ -109,8 +122,11 @@ module.exports = {
 ```
 # React frontend
 Deployed using REPL:
+<br>
 <a>https://waveportal-starter-project.chefjoseph.repl.co/</a>
+<br>
 Click 'Connect Wallet' button to signin with Metamask extension.
+<br>
 This is possible with:
 ```shell
 const getEthereumObject = () => window.ethereum;
@@ -119,5 +135,7 @@ const accounts = await ethereum.request({
 });
 ```
 By clicking on the 'Wave at me' button, the wave() function from WavePortal.sol is called on. totalWaves state variable is incremented +=1.
+<br>
 wave() costs ETH.
+<br>
 getTotalWaves() is only reading so it is free.
