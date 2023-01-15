@@ -1,6 +1,7 @@
 # Solidity dAPP
 # FAQ
 What is a smart contract? Smart contracts are self-executing lines of code (transactions) with the terms of an agreement between buyer and seller automatically verified and executed via a computer network. These transactions are traceable, transparent, and irreversible.
+Check transactions on <a>https://goerli.etherscan.io/address/0x1b5c30e5e994195a86c3b8aaFe32aEa7fd1B1756</a>
 
 # Hardhat
 
