@@ -1,7 +1,9 @@
 # Solidity dAPP
 # FAQ
 What is a smart contract? Smart contracts are self-executing lines of code (transactions) with the terms of an agreement between buyer and seller automatically verified and executed via a computer network. These transactions are traceable, transparent, and irreversible.
-Check transactions on <a>https://goerli.etherscan.io/address/0x1b5c30e5e994195a86c3b8aaFe32aEa7fd1B1756</a>
+Check transaction blocks:
+<a>https://etherscan.io/blocks</a>
+Use Goerli Test Network for fake Ethereum: <a>https://goerli.etherscan.io/address/0x1b5c30e5e994195a86c3b8aaFe32aEa7fd1B1756</a>
 
 # Hardhat
 
@@ -28,12 +30,14 @@ npx hardhat test
 2. Deploy it to our local blockchain.
     ```shell
     npx hardhat run scripts/run.js
-    npx hardhat run scripts/deploy.js
+    npx hardhat run scripts/deploy.js --network localhost
     ```
 3. Execute
    ```shell
    Confirm with console.log
-    ```
+   ```
+    Check transaction blocks:
+   <a>https://etherscan.io/blocks/</a>
 hre.ethers
   hre is short for Hardhat Runtime Environment. It is an object containing all the functionality that Hardhat exposes when running a task, test or script.
 
