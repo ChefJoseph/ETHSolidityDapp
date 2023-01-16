@@ -62,7 +62,8 @@ We will simulate storing data, retrieving data, and changing state with multiple
   const waveContract = await waveContractFactory.deploy();
   await waveContract.deployed();
   ```
-  Call functions from Solidity contracts/WavePortal.js
+  <h3>Call functions from Solidity contracts/WavePortal.js</h3>
+  
   ```shell
   console.log("Contract deployed to:", waveContract.address);
   console.log("Contract deployed by:", owner.address);
@@ -96,7 +97,8 @@ We will simulate storing data, retrieving data, and changing state with multiple
 # scripts/deploy.js
 
 Here we deploy to the real test net using Quicknode and Goerli. Each transaction is broadcasted to the testnet blockchain. The goerli testnet is a clone of the mainnet using fake ETH but are run by actual miners.
-start local Ethereum network
+<br>
+Start local Ethereum network:
 ```shell
 npx hardhat node
 ```
