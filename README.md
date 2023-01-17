@@ -1,5 +1,12 @@
-# Solidity dAPP
+# Solidity dApp
+# Intro
+This is a dApp while completing Buildspace.io Web3 course. It utilizes Solidity, Goerli Ethereum testnet, React, Hardhat, Chai. User connects wallet (MetaMask). Once connected, user can see how many waves the page (address) has received and also can send waves. Each wave is a transaction that is mined and persists on the blockchain. I've added a visual wave counter.
+<br>
+Deployed using REPL:
+<a>https://waveportal-project.chefjoseph.repl.co</a>
 # FAQ
+What is dAPPs? dAPPs are decentralized applications that operate autonomously through smart contracts, that run on a decentralized blockchain, computing, or distributed ledger system.
+<br>
 What is a smart contract? Smart contracts are self-executing lines of code (transactions) with the terms of an agreement between buyer and seller automatically verified and executed via a computer network. These transactions are traceable, transparent, and irreversible.
 <br>
 Check transactions:
