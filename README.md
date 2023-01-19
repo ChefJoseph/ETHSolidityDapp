@@ -1,6 +1,6 @@
 # Solidity dApp
 # Intro
-This is a dApp while completing Buildspace.io Web3 course. It utilizes Solidity, Goerli Ethereum testnet, React, Hardhat, Chai. User connects wallet (MetaMask). Once connected, user can see how many waves the page (address) has received and also can send waves. Each wave is a transaction that is mined and persists on the blockchain. I've added a visual wave counter.
+This is a dApp while completing Buildspace.io Web3 course. It utilizes Solidity, Goerli Ethereum testnet, React, Hardhat, Chai. User connects wallet (MetaMask). Once connected, user can see how many waves the page (address) has received and also can send waves. Each wave is a transaction that is mined and persists on the blockchain. I've added a visual wave counter, message form, and transaction history.
 <br>
 Deployed using REPL:
 <a>https://waveportal-project.chefjoseph.repl.co</a>
