@@ -1,40 +1,64 @@
 const main = async () => {
-    //in order to deploy, need wallet address: randomPerson created
-    const [owner, randomPerson] = await hre.ethers.getSigners();
-    //compile contract and generate nec files under artifacts dir
     const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
-    //hardhat will create local eth network just for contract and refresh. Easier to debug from clean slate
-    const waveContract = await waveContractFactory.deploy();
+    const waveContract = await waveContractFactory.deploy({
+        value: hre.ethers.utils.parseEther("0.1"),
+    });
     await waveContract.deployed();
-    //once deployed, it will give address of deployed contract
-    console.log("Contract deployed to:", waveContract.address);
-    console.log("Contract deployed by:", owner.address);
+    console.log("Contract addy:", waveContract.address);
+   /*
+   * Get Contract balance
+   */
+    let contractBalance = await hre.ethers.provider.getBalance(
+        waveContract.address
+    );
+    console.log(
+        "Contract balance:",
+        hre.ethers.utils.formatEther(contractBalance)
+    );
 
-    //need to manually call our functions like any API
-    //grab total waves
-    await waveContract.getTotalWaves();
-    //wave
-    const firstWaveTxn = await waveContract.wave();
-    await firstWaveTxn.wait();
-    //grab total waves
-    await waveContract.getTotalWaves();
-    //simulate another user
-    const secondWaveTxn = await waveContract.connect(randomPerson).wave();
-    await secondWaveTxn.wait();
+    // let waveCount;
+    // waveCount = await waveContract.getTotalWaves();
+    // console.log(waveCount.toNumber());
   
-    await waveContract.getTotalWaves();
-};
+    /**
+     * Let's send a few waves!
+     */
+    // let waveTxn = await waveContract.wave("A message!");
+    // await waveTxn.wait(); // Wait for the transaction to be mined
+    /*
+/*
+   * Let's try two waves now
+   */
+    const waveTxn = await waveContract.wave("This is wave #1");
+    await waveTxn.wait();
 
-const runMain = async () => {
+    // const waveTxn2 = await waveContract.wave("This is wave #2");
+    // await waveTxn2.wait();
+
+//    Get Contract balance to see what happened!
+  
+    contractBalance = await hre.ethers.provider.getBalance(waveContract.address);
+    console.log(
+        "Contract balance:",
+        hre.ethers.utils.formatEther(contractBalance)
+    );
+
+    // const [_, randomPerson] = await hre.ethers.getSigners();
+    // waveTxn = await waveContract.connect(randomPerson).wave("Another message!");
+    // await waveTxn.wait(); // Wait for the transaction to be mined
+  
+    let allWaves = await waveContract.getAllWaves();
+    console.log(allWaves);
+  };
+  
+  const runMain = async () => {
     try {
-        await main();
-        process.exit(0); //exit Node process without error
+      await main();
+      process.exit(0);
     } catch (error) {
-        console.log(error);
-        process.exit(1); //exit Node while indicating error message
-        //status codes here: https://stackoverflow.com/a/47163396/7974948
+      console.log(error);
+      process.exit(1);
     }
-};
-
-runMain();
-     
+  };
+  
+  runMain();
